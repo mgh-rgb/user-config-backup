@@ -1,1 +1,394 @@
-
+{
+  "PrimaryBitmap" : {
+    "name" : "Primary Bitmap",
+    "format" : "bitmap",
+    "length" : 64,
+    "type" : "hex",
+    "active" : false,
+    "description" : "Indicates the presence of data elements (1-64). If bit 1 is set, a Secondary Bitmap exists."
+  },
+  "SecondaryBitmap" : {
+    "name" : "Secondary Bitmap",
+    "format" : "bitmap",
+    "length" : 64,
+    "type" : "hex",
+    "active" : false,
+    "description" : "Indicates the presence of additional data elements (65-128)."
+  },
+  "0" : {
+    "name" : "MTI",
+    "format" : "fixed",
+    "length" : 4,
+    "type" : "numeric",
+    "active" : false,
+    "description" : "Defines the message type. Example: 0100 - Authorization Request, 0200 - Financial Transaction, 0420 - Reversal."
+  },
+  "2" : {
+    "name" : "PAN",
+    "format" : "llvar",
+    "max_length" : 19,
+    "type" : "numeric",
+    "active" : false,
+    "description" : "Primary Account Number used for transaction processing. Must pass Luhn check."
+  },
+  "3" : {
+    "name" : "Processing Code",
+    "format" : "fixed",
+    "length" : 6,
+    "type" : "numeric",
+    "active" : false,
+    "description" : "Specifies transaction type and involved accounts. Example: 000000 - Debit, 200000 - Credit."
+  },
+  "4" : {
+    "name" : "Transaction Amount",
+    "format" : "fixed",
+    "length" : 12,
+    "type" : "numeric",
+    "active" : false,
+    "description" : "Total transaction amount, including decimals (last two digits)."
+  },
+  "7" : {
+    "name" : "Transmission Date & Time",
+    "format" : "fixed",
+    "length" : 10,
+    "type" : "numeric",
+    "active" : false,
+    "description" : "Transaction timestamp in MMDDhhmmss format (UTC)."
+  },
+  "11" : {
+    "name" : "System Trace Audit Number",
+    "format" : "fixed",
+    "length" : 6,
+    "type" : "numeric",
+    "active" : false,
+    "description" : "Unique transaction identifier within a day."
+  },
+  "12" : {
+    "name" : "Local Transaction Time",
+    "format" : "fixed",
+    "length" : 6,
+    "type" : "numeric",
+    "active" : false,
+    "description" : "Time of transaction in hhmmss format."
+  },
+  "13" : {
+    "name" : "Local Transaction Date",
+    "format" : "fixed",
+    "length" : 4,
+    "type" : "numeric",
+    "active" : false,
+    "description" : "Transaction date in MMDD format."
+  },
+  "14" : {
+    "name" : "Expiration Date",
+    "format" : "fixed",
+    "length" : 4,
+    "type" : "numeric",
+    "active" : false,
+    "description" : "Card expiration in YYMM format."
+  },
+  "18" : {
+    "name" : "Merchant Category Code",
+    "format" : "fixed",
+    "length" : 4,
+    "type" : "numeric",
+    "active" : false,
+    "description" : "Classifies merchant type for regulatory and fee purposes."
+  },
+  "22" : {
+    "name" : "POS Entry Mode",
+    "format" : "fixed",
+    "length" : 3,
+    "type" : "numeric",
+    "active" : false,
+    "description" : "Indicates how card data was entered (e.g., 021 - Magnetic Stripe, 051 - Chip, 071 - Contactless)."
+  },
+  "32" : {
+    "name" : "Acquiring Institution ID",
+    "format" : "llvar",
+    "max_length" : 11,
+    "type" : "numeric",
+    "active" : false,
+    "description" : "Identifies acquiring institution handling the transaction."
+  },
+  "37" : {
+    "name" : "Retrieval Reference Number",
+    "format" : "fixed",
+    "length" : 12,
+    "type" : "alphanumeric",
+    "active" : false,
+    "description" : "Unique identifier assigned by the acquirer."
+  },
+  "38" : {
+    "name" : "Authorization ID Response",
+    "format" : "fixed",
+    "length" : 6,
+    "type" : "alphanumeric",
+    "active" : false,
+    "description" : "Code returned by issuer for transaction authorization."
+  },
+  "39" : {
+    "name" : "Response Code",
+    "format" : "fixed",
+    "length" : 2,
+    "type" : "alphanumeric",
+    "active" : false,
+    "description" : "Indicates transaction outcome (e.g., 00 - Approved, 05 - Declined)."
+  },
+  "41" : {
+    "name" : "Terminal ID",
+    "format" : "fixed",
+    "length" : 8,
+    "type" : "alphanumeric",
+    "active" : false,
+    "description" : "Uniquely identifies the transaction terminal."
+  },
+  "42" : {
+    "name" : "Merchant ID",
+    "format" : "fixed",
+    "length" : 15,
+    "type" : "alphanumeric",
+    "active" : false,
+    "description" : "Uniquely identifies the merchant accepting the transaction."
+  },
+  "49" : {
+    "name" : "Transaction Currency Code",
+    "format" : "fixed",
+    "length" : 3,
+    "type" : "numeric",
+    "active" : false,
+    "description" : "ISO 4217 currency code (e.g., 840 - USD)."
+  },
+  "52" : {
+    "name" : "PIN Data",
+    "format" : "fixed",
+    "length" : 64,
+    "type" : "binary",
+    "active" : false,
+    "description" : "Encrypted PIN block for authentication."
+  },
+  "54" : {
+    "name" : "Additional Amounts",
+    "format" : "lllvar",
+    "max_length" : 240,
+    "type" : "alphanumeric",
+    "active" : false,
+    "description" : "Contains additional financial details if required."
+  },
+  "55" : {
+    "name" : "EMV Data",
+    "format" : "lllvar",
+    "max_length" : 255,
+    "type" : "binary",
+    "active" : false,
+    "description" : "Contains EMV chip data for authentication."
+  },
+  "63" : {
+    "name" : "Private Reserved Data",
+    "format" : "lllvar",
+    "max_length" : 999,
+    "type" : "alphanumeric",
+    "active" : false,
+    "description" : "Network-specific or proprietary data."
+  },
+  "67" : {
+    "name" : "Extended Payment Code",
+    "format" : "fixed",
+    "length" : 2,
+    "type" : "numeric",
+    "active" : false,
+    "description" : "Indicates the payment processing method used for the transaction, if required by the issuer."
+  },
+  "90" : {
+    "name" : "Original Data Elements",
+    "format" : "fixed",
+    "length" : 42,
+    "type" : "numeric",
+    "active" : false,
+    "description" : "Contains details of the original transaction, including message type, system trace audit number, and local date/time when applicable."
+  },
+  "95" : {
+    "name" : "Replacement Amounts",
+    "format" : "fixed",
+    "length" : 42,
+    "type" : "alphanumeric",
+    "active" : false,
+    "description" : "Specifies the successfully processed amount when different from the authorized amount, commonly used for ATM partial dispenses."
+  },
+  "96" : {
+    "name" : "Message Security Code",
+    "format" : "fixed",
+    "length" : 64,
+    "type" : "binary",
+    "active" : false,
+    "description" : "Security password assigned by the processor, required when specific values are present in DE 70 (Network Management Information Code)."
+  },
+  "98" : {
+    "name" : "Payee",
+    "format" : "fixed",
+    "length" : 25,
+    "type" : "alphanumeric",
+    "active" : false,
+    "description" : "Identifies the recipient of a payment transaction if available."
+  },
+  "100" : {
+    "name" : "Receiving Institution Identification Code",
+    "format" : "llvar",
+    "max_length" : 11,
+    "type" : "numeric",
+    "active" : false,
+    "description" : "Used for transaction routing when based on this field instead of the PAN."
+  },
+  "102" : {
+    "name" : "Account Identification 1",
+    "format" : "llvar",
+    "max_length" : 28,
+    "type" : "alphanumeric",
+    "active" : false,
+    "description" : "Primary account number or identifier copied from the original transaction message."
+  },
+  "103" : {
+    "name" : "Account Identification 2",
+    "format" : "llvar",
+    "max_length" : 28,
+    "type" : "alphanumeric",
+    "active" : false,
+    "description" : "Secondary account number or identifier copied from the original transaction message."
+  },
+  "104" : {
+    "name" : "Transaction Description",
+    "format" : "lllvar",
+    "max_length" : 100,
+    "type" : "alphanumeric",
+    "active" : false,
+    "description" : "Provides additional information about the transaction if available."
+  },
+  "105" : {
+    "name" : "Large Private Data 1",
+    "format" : "lllvar",
+    "max_length" : 255,
+    "type" : "alphanumeric",
+    "active" : false,
+    "description" : "Reserved for proprietary or private data if applicable."
+  },
+  "106" : {
+    "name" : "Large Private Data 2",
+    "format" : "lllvar",
+    "max_length" : 225,
+    "type" : "alphanumeric",
+    "active" : false,
+    "description" : "Reserved for additional private data storage if needed."
+  },
+  "107" : {
+    "name" : "Large Private Data 3",
+    "format" : "lllvar",
+    "max_length" : 225,
+    "type" : "alphanumeric",
+    "active" : false,
+    "description" : "Reserved for additional proprietary data if applicable."
+  },
+  "108" : {
+    "name" : "Large Private Data 4",
+    "format" : "lllvar",
+    "max_length" : 225,
+    "type" : "alphanumeric",
+    "active" : false,
+    "description" : "Reserved for proprietary use if additional storage is needed."
+  },
+  "109" : {
+    "name" : "Sender Data",
+    "format" : "lllvar",
+    "max_length" : 225,
+    "type" : "alphanumeric",
+    "active" : false,
+    "description" : "Contains sender-specific information if available."
+  },
+  "110" : {
+    "name" : "Receiver Data",
+    "format" : "lllvar",
+    "max_length" : 225,
+    "type" : "alphanumeric",
+    "active" : false,
+    "description" : "Contains receiver-specific information if available."
+  },
+  "111" : {
+    "name" : "Additional Data, Private Acquirer",
+    "format" : "lllvar",
+    "max_length" : 225,
+    "type" : "alphanumeric",
+    "active" : false,
+    "description" : "Acquirer-specific additional data if applicable."
+  },
+  "113" : {
+    "name" : "Authorizing Agent Institution ID Code",
+    "format" : "lllvar",
+    "max_length" : 11,
+    "type" : "numeric",
+    "active" : false,
+    "description" : "Identifies the institution authorizing the transaction, required only if requested by the issuer."
+  },
+  "120" : {
+    "name" : "Account Qualifiers",
+    "format" : "lllvar",
+    "max_length" : 6,
+    "type" : "alphanumeric",
+    "active" : false,
+    "description" : "Provides additional details related to the account, required only if requested by the issuer."
+  },
+  "122" : {
+    "name" : "Sponsor Bank ID",
+    "format" : "lllvar",
+    "max_length" : 11,
+    "type" : "alphanumeric",
+    "active" : false,
+    "description" : "Identifies the sponsor bank, required only if requested by the issuer."
+  },
+  "123" : {
+    "name" : "Additional Data",
+    "format" : "lllvar",
+    "max_length" : 50,
+    "type" : "alphanumeric",
+    "active" : false,
+    "description" : "Contains supplementary verification data, including Address Verification Service (AVS) details."
+  },
+  "124" : {
+    "name" : "Tag Data, Acquirer",
+    "format" : "lllvar",
+    "max_length" : 255,
+    "type" : "alphanumeric",
+    "active" : false,
+    "description" : "Includes tag-length-value (TLV) formatted data, if available, from the acquiring entity."
+  },
+  "125" : {
+    "name" : "Tag Data, Issuer",
+    "format" : "lllvar",
+    "max_length" : 255,
+    "type" : "alphanumeric",
+    "active" : false,
+    "description" : "Includes tag-length-value (TLV) formatted data, if available, from the issuing entity."
+  },
+  "126" : {
+    "name" : "Issuer Trace Data",
+    "format" : "lllvar",
+    "max_length" : 100,
+    "type" : "alphanumeric",
+    "active" : false,
+    "description" : "Contains traceability information specific to issuer transactions, used in Mastercard Network Exchange."
+  },
+  "127" : {
+    "name" : "Acquirer Trace Data",
+    "format" : "lllvar",
+    "max_length" : 100,
+    "type" : "alphanumeric",
+    "active" : false,
+    "description" : "Includes transaction trace data from the acquirer. Not sent to ISO issuers by default but can be enabled."
+  },
+  "128" : {
+    "name" : "Message Authentication Code",
+    "format" : "fixed",
+    "length" : 64,
+    "type" : "binary",
+    "active" : false,
+    "description" : "Used for message integrity verification when MACing is required and specific data elements (DE 65-127) are present."
+  }
+}
