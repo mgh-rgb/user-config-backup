@@ -31,14 +31,6 @@
     "active" : true,
     "description" : "Primary Account Number used for transaction processing. Must pass Luhn check."
   },
-  "3" : {
-    "name" : "Processing Code",
-    "format" : "fixed",
-    "length" : 6,
-    "type" : "numeric",
-    "active" : false,
-    "description" : "Specifies transaction type and involved accounts. Example: 000000 - Debit, 200000 - Credit."
-  },
   "4" : {
     "name" : "Transaction Amount",
     "format" : "fixed",
