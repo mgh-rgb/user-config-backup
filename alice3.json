@@ -23,14 +23,6 @@
     "active" : false,
     "description" : "Defines the message type. Example: 0100 - Authorization Request, 0200 - Financial Transaction, 0420 - Reversal."
   },
-  "2" : {
-    "name" : "Primary Account Number (PAN)",
-    "format" : "lllvar",
-    "max_length" : 19,
-    "type" : "numeric",
-    "active" : true,
-    "notes" : "Stores card number for transaction routing"
-  },
   "3" : {
     "name" : "Processing Code",
     "format" : "fixed",
